@@ -2,7 +2,7 @@ import pandas as pd  # type: ignore
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn
+from sklearn.metrics import accuracy_score, classification_report
 
 
 def create_model(data):
@@ -18,15 +18,16 @@ def create_model(data):
         X, y, test_size=0.2, random_state=42
     )
 
-    # train
+    # train model
     model = LogisticRegression()
     model.fit(X_train, y_train)
 
+    # test model
+    y_pred = model.predict(X_test)
+    print("Accuracy of our model: ", accuracy_score(y_test, y_pred))
+    print("Classification report: \n", classification_report(y_test, y_pred))
+
     return model, scaler
-
-
-def test_model(model):
-
 
 
 def get_clean_data():
@@ -42,8 +43,6 @@ def get_clean_data():
 def main():
     data = get_clean_data()
     model, scaler = create_model(data)
-
-    test_model(model)
 
 
 if __name__ == "__main__":
