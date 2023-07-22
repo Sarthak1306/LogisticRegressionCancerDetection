@@ -174,6 +174,9 @@ def add_predictions(input_data):
 
     prediction = model.predict(input_array_scaled)
 
+    st.subheader("Cell Cluster Prediction")
+    st.write("The cell cluster is:")
+
     if prediction[0] == 0:
         st.write("Benign")
     else:
