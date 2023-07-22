@@ -81,6 +81,7 @@ def get_scaled_values(input_dict):
 
 
 def get_radar_chart(input_data):
+    input_data = get_scaled_values(input_data)
     categories = [
         "Radius",
         "Texture",
